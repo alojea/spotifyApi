@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "6e027641-3e12-4ffb-980f-adb3b6e7b076",
+		"name": "Spotify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Access Grant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://accounts.spotify.com/authorize?client_id=&response_type=code&redirect_uri=https://localhost:3030&scope=playlist-read-collaborative playlist-modify-public playlist-read-private playlist-modify-private&state=34fFs29kd09",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": ""
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://localhost:3030"
+						},
+						{
+							"key": "scope",
+							"value": "playlist-read-collaborative playlist-modify-public playlist-read-private playlist-modify-private"
+						},
+						{
+							"key": "state",
+							"value": "34fFs29kd09"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://localhost:3030",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accounts.spotify.com/api/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Access Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://localhost:3030",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://accounts.spotify.com/api/token",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Playlist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Piano list\",\r\n    \"public\" : false,\r\n    \"description\" : \"example list\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/users/jeunjz60o6m3cshc0w4k5mj8p/playlists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"users",
+						"jeunjz60o6m3cshc0w4k5mj8p",
+						"playlists"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/me",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get artist info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/artists/2VKfXEWzhUi9siHBDTI02Y",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"artists",
+						"2VKfXEWzhUi9siHBDTI02Y"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Playlist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spotify.com/v1/me/playlists",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"me",
+						"playlists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Playlist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Example\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.spotify.com/v1/playlists/4cQHTLdyzzp1bzoCHIaKqs",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"playlists",
+						"4cQHTLdyzzp1bzoCHIaKqs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://api.spotify.com/v1/search?type=album&include_external=audio&q=artist:Miles%20Davis",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spotify",
+						"com"
+					],
+					"path": [
+						"v1",
+						"search"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "album"
+						},
+						{
+							"key": "include_external",
+							"value": "audio"
+						},
+						{
+							"key": "q",
+							"value": "artist:Miles%20Davis"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
